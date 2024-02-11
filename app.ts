@@ -1,9 +1,4 @@
-/**
- * @author Fuad Hasan
- * Builds a document fragment from a JSON object representing HTML.
- */
-
-type ObjType = {
+interface ObjType {
     tag: string;
     text?: string;
     attr?: object;
@@ -12,7 +7,17 @@ type ObjType = {
     Node?: Node;
 }
 
-export function json2html(object: ObjType) {
+/**
+ * @param {ObjType} object
+ * @throws {Error} - If the parameter is not an object.
+ * @throws {Error} - If the object key is not a string.
+ * @throws {Error} - If the childs key is not an array.
+ * @throws {Error} - If the child key is not an object.
+ * @throws {Error} - If the Node key is not a DocumentFragment, Element, or Text.
+ * @returns {DocumentFragment}
+ */
+
+export function fragmentBuilder(object: ObjType): DocumentFragment {
 	if (!(object instanceof Object)) {
 		throw new Error('Parameter must be an object');
 	}
@@ -32,13 +37,13 @@ export function json2html(object: ObjType) {
 				}
 			} else if (key === 'attr') {
 				const element = fragment.lastElementChild as HTMLElement;
-				for (const [attrName, attrValue] of Object.entries(value)) {
+				for (const [attrName, attrValue] of Object.entries(value as object)) {
 					element.setAttribute(attrName, attrValue);
 				}
 			} else if (key === 'childs') {
 				if (Array.isArray(value)) {
 					for (const childObj of value) {
-						const childFragment = json2html(childObj);
+						const childFragment = fragmentBuilder(childObj);
                         if (!fragment.lastElementChild) {
                             throw new Error('No last element child');
                         }
@@ -49,7 +54,7 @@ export function json2html(object: ObjType) {
 				}
 			}else if(key === 'child'){
 				if (value instanceof Object) {
-					const childFragment = json2html(value as ObjType);
+					const childFragment = fragmentBuilder(value as ObjType);
                     if (!fragment.lastElementChild) {
                         throw new Error('No last element child');
                     }

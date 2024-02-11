@@ -1,7 +1,7 @@
 {
-  "name": "json2html",
+  "name": "fragmentbuilder",
   "version": "1.0.0",
-  "description": "Builds a document fragment from a JSON object representing HTML.",
+  "description": "Builds a document fragment from a javascript object representing HTML.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

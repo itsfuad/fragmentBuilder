@@ -1,8 +1,13 @@
 /**
- * @author Fuad Hasan
- * Builds a document fragment from a JSON object representing HTML.
+ * @param {ObjType} object
+ * @throws {Error} - If the parameter is not an object.
+ * @throws {Error} - If the object key is not a string.
+ * @throws {Error} - If the childs key is not an array.
+ * @throws {Error} - If the child key is not an object.
+ * @throws {Error} - If the Node key is not a DocumentFragment, Element, or Text.
+ * @returns {DocumentFragment}
  */
-export function json2html(object) {
+export function fragmentBuilder(object) {
     if (!(object instanceof Object)) {
         throw new Error('Parameter must be an object');
     }
@@ -29,7 +34,7 @@ export function json2html(object) {
             else if (key === 'childs') {
                 if (Array.isArray(value)) {
                     for (const childObj of value) {
-                        const childFragment = json2html(childObj);
+                        const childFragment = fragmentBuilder(childObj);
                         if (!fragment.lastElementChild) {
                             throw new Error('No last element child');
                         }
@@ -42,7 +47,7 @@ export function json2html(object) {
             }
             else if (key === 'child') {
                 if (value instanceof Object) {
-                    const childFragment = json2html(value);
+                    const childFragment = fragmentBuilder(value);
                     if (!fragment.lastElementChild) {
                         throw new Error('No last element child');
                     }

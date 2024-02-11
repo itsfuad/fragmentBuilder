@@ -1,7 +1,7 @@
 
-import { json2html } from "./app.js";
+import { fragmentBuilder } from "./app.js";
 
-const output = json2html({
+const output = fragmentBuilder({
     tag: 'div',
     attr: {
         class: 'container'
