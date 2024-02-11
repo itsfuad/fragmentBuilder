@@ -1,0 +1,20 @@
+{
+  "name": "json2html",
+  "version": "1.0.0",
+  "description": "Builds a document fragment from a JSON object representing HTML.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "fragment",
+    "json",
+    "object",
+    "html",
+    "javascript",
+    "typescript"
+  ],
+  "author": "Fuad Hasan",
+  "license": "MIT",
+  "types": "./app.d.ts"
+}
