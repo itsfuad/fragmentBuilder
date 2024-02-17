@@ -1,6 +1,6 @@
 # Javascript object to HTML fragment
 
-This allows you to create a HTML fragment from a javascript object.
+Json to HTML is a function that converts a JSON object to HTML document fragment. This fragment then can be directly used inside innerHTML.
 
  example
  ```js
