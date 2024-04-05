@@ -1,8 +1,11 @@
 {
-  "name": "fragmentbuilder",
+  "name": "@itsfuad/fragmentbuilder",
   "version": "1.0.1",
   "description": "Builds a document fragment from a javascript object representing HTML.",
   "main": "app.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@itsfuad"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
