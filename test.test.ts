@@ -1,5 +1,5 @@
 
-import { fragmentBuilder } from "./app.js";
+import { fragmentBuilder } from "./app";
 
 const output = fragmentBuilder({
     tag: 'div',

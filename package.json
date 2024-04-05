@@ -1,6 +1,6 @@
 {
   "name": "@itsfuad/fragmentbuilder",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Builds a document fragment from a javascript object representing HTML.",
   "main": "app.js",
   "publishConfig": {
